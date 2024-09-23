@@ -48,10 +48,8 @@ jobs:
         run: sh compile.sh
 
       - name: Release and Upload Assets
-        uses: cipollo/release-action@v1
+        uses: softprops/action-gh-release@v1
         with:
-          name: v0.60.0
-          tag: v0.60.0
-          allowUpdates: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: "*.ipk"
+          files: "*.ipk"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
