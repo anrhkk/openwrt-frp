@@ -47,6 +47,14 @@ jobs:
           OPENWRT_GOLANG_COMMIT: ${{ secrets.OPENWRT_GOLANG_COMMIT }}
         run: sh compile.sh
 
+      - name: Save Build Result
+        uses: actions/upload-artifact@v2
+        with:
+          name: frp
+          path: |
+            *.ipk
+          retention-days: 7
+
       - name: Release and Upload Assets
         uses: softprops/action-gh-release@v1
         with:
